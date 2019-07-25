@@ -19,7 +19,7 @@ module.exports = app => {
     app.route('/categories')
         .all(app.config.passport.authenticate())
         .get(admin(app.api.category.get))
-        .post(admin(app.api.category.save))
+        .post(app.api.category.save)
 
     // Cuidado com ordem! Tem que vir antes de /categories/:id
     app.route('/categories/tree')

@@ -8,7 +8,7 @@ module.exports = app => {
     // encypt password
     const encryptPassword = password => {
         const salt = bcrypt.genSaltSync(10)
-        return bcrypt.hashSync(password, salt)       
+        return bcrypt.hashSync(password, salt)
     }
 
     // salvar ou alterar usuário
@@ -38,16 +38,16 @@ module.exports = app => {
 
         delete user.confirmPassword
 
-        if(user.id){
+        if (user.id) {
             app.db('users')
                 .update(user)
-                .where({id: user.id})
-                .then( _ => res.status(204).send())
+                .where({ id: user.id })
+                .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
-        }else {
+        } else {
             app.db('users')
                 .insert(user)
-                .then( _ => res.status(204).send())
+                .then(_ => res.status(204).send())
                 .catch(err => res.status(500))
         }
     }
@@ -55,8 +55,8 @@ module.exports = app => {
     // metodo get
     const get = (req, res) => {
         app.db('users')
-            .select('id','name','email', 'admin')
-            .then(users => res.json(user))
+            .select('id', 'name', 'email', 'admin')
+            .then(users => res.json(users))
             .catch(err => res.status(500).send(err))
     }
 
@@ -64,14 +64,12 @@ module.exports = app => {
     // desafio get by id    
     const getById = (req, res) => {
         app.db('users')
-            .select('id','name','email', 'admin')
-            .where({id: req.params.id}) // pode ser verificado o id
+            .select('id', 'name', 'email', 'admin')
+            .where({ id: req.params.id }) // pode ser verificado o id
             .first() //apenas um usuário
             .then(user => res.json(user))
             .catch(err => res.status(500).send(err))
     }
 
-    
-    
-    return { save , get , getById}
+    return { save, get, getById }
 }

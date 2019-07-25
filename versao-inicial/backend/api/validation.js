@@ -1,7 +1,5 @@
 // Funções ferramentas 
-
 module.exports = app => {
-
 
     function existOrError(value, msg) {
         if (!value) throw msg
@@ -22,6 +20,6 @@ module.exports = app => {
         if (valueA !== valueB) throw msg
     }
 
-    return {existOrError, notExistsOrError ,equalsOrError}
+    return { existOrError, notExistsOrError, equalsOrError }
 }
 
