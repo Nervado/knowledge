@@ -4,12 +4,12 @@ module.exports = {
 
   client: 'postgresql',
   connection: {
-    //host : '127.0.0.1',
-    //port: 5432,
+    host: '127.0.0.1',
+    port: 5432,
     database: 'knowledge',
-    user: 'postgres',
-    password: 'tHule157',
-    //charset  : 'utf8'
+    user: 'nervado',
+    //password: '',
+    //charset: 'utf8'
   },
   pool: {
     min: 2,
@@ -18,6 +18,6 @@ module.exports = {
   migrations: {
     tableName: 'knex_migrations'
   }
-  
+
 };
 
